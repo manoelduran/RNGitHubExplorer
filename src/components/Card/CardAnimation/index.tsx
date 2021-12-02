@@ -20,6 +20,7 @@ export function CardAnimation({ children, ...rest }: CardAnimationProps) {
   const animatedStyle = useAnimatedStyle(() => {
     return {
       opacity: cardOpacity.value,
+      
       transform: [
         { translateX: cardOffset.value, }
       ]
@@ -27,8 +28,12 @@ export function CardAnimation({ children, ...rest }: CardAnimationProps) {
   });
 
   useEffect(() => {
-    cardOpacity.value = withTiming(1);
-    cardOffset.value = withTiming(0);
+    cardOpacity.value = withTiming(1, {
+      duration: 1000
+    });
+    cardOffset.value = withTiming(0, {
+      duration: 1000
+    });
   }, []);
 
   return (
